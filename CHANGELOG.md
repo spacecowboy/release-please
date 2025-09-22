@@ -4,6 +4,69 @@
 
 [1]: https://www.npmjs.com/package/release-please?activeTab=versions
 
+## [17.1.2](https://github.com/googleapis/release-please/compare/v17.1.1...v17.1.2) (2025-08-19)
+
+
+### Bug Fixes
+
+* reduce graphQL pagination size to 10 ([#2579](https://github.com/googleapis/release-please/issues/2579)) ([05e31e4](https://github.com/googleapis/release-please/commit/05e31e402b850952f7ded53c816679865d9ba42c))
+
+## [17.1.1](https://github.com/googleapis/release-please/compare/v17.1.0...v17.1.1) (2025-06-30)
+
+
+### Bug Fixes
+
+* skipSnapshot is not working for java-yoshi ([#2562](https://github.com/googleapis/release-please/issues/2562)) ([2f04f4f](https://github.com/googleapis/release-please/commit/2f04f4f7ddd0db27d7c0ce40b3a11541d9c3067e))
+
+## [17.1.0](https://github.com/googleapis/release-please/compare/v17.0.0...v17.1.0) (2025-06-05)
+
+
+### Features
+
+* add skip-changelog flag ([#2535](https://github.com/googleapis/release-please/issues/2535)) ([2492658](https://github.com/googleapis/release-please/commit/2492658b9dd93d765e0bbfa45f41ca8a48af996c))
+
+
+### Bug Fixes
+
+* use version-file if it's set for go projects ([#2542](https://github.com/googleapis/release-please/issues/2542)) ([a015272](https://github.com/googleapis/release-please/commit/a015272b5d900c086f80a674785cf88f2f151f43))
+
+## [17.0.0](https://github.com/googleapis/release-please/compare/v16.18.0...v17.0.0) (2025-03-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update octokit to v20 ([#2490](https://github.com/googleapis/release-please/issues/2490))
+
+### Features
+
+* **deps:** update octokit to v20 ([#2490](https://github.com/googleapis/release-please/issues/2490)) ([9f3b669](https://github.com/googleapis/release-please/commit/9f3b6699474b0ff1987ef3ad4ca5a96ce69d9a6a))
+
+## [16.18.0](https://github.com/googleapis/release-please/compare/v16.17.0...v16.18.0) (2025-02-27)
+
+
+### Features
+
+* Manifest.createRelease to return PR numbers ([#2491](https://github.com/googleapis/release-please/issues/2491)) ([0f07691](https://github.com/googleapis/release-please/commit/0f076910c719b8dc8563936039b0708567811049))
+
+## [16.17.0](https://github.com/googleapis/release-please/compare/v16.16.0...v16.17.0) (2025-02-20)
+
+
+### Features
+
+* allow date updating in generic strategy ([#2440](https://github.com/googleapis/release-please/issues/2440)) ([3099091](https://github.com/googleapis/release-please/commit/3099091bb6787e49fe36e289db36ac01a71af2c3))
+
+## [16.16.0](https://github.com/googleapis/release-please/compare/v16.15.0...v16.16.0) (2025-02-19)
+
+
+### Features
+
+* add strategy for R packages ([#2436](https://github.com/googleapis/release-please/issues/2436)) ([2b5ff3b](https://github.com/googleapis/release-please/commit/2b5ff3b5d7b5c8546bb112149908e150e9eba680))
+
+
+### Bug Fixes
+
+* **deps:** bump dependency versions ([#2486](https://github.com/googleapis/release-please/issues/2486)) ([6db2fb4](https://github.com/googleapis/release-please/commit/6db2fb48adcdf60f1779601fb36f982e2fb7f6f7))
+
 ## [16.15.0](https://github.com/googleapis/release-please/compare/v16.14.4...v16.15.0) (2024-11-13)
 
 

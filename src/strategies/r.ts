@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,31 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Generic
-import {Changelog} from '../updaters/changelog';
-// PHP Specific.
-import {RootComposerUpdatePackages} from '../updaters/php/root-composer-update-packages';
 import {BaseStrategy, BuildUpdatesOptions, BaseStrategyOptions} from './base';
-import {DefaultUpdater} from '../updaters/default';
 import {Update} from '../update';
-import {VersionsMap} from '../version';
+import {News} from '../updaters/r/news';
+import {Version} from '../version';
+import {DescriptionUpdater} from '../updaters/r/description';
 
 const CHANGELOG_SECTIONS = [
   {type: 'feat', section: 'Features'},
   {type: 'fix', section: 'Bug Fixes'},
   {type: 'perf', section: 'Performance Improvements'},
+  {type: 'deps', section: 'Dependencies'},
   {type: 'revert', section: 'Reverts'},
-  {type: 'chore', section: 'Miscellaneous Chores'},
-  {type: 'docs', section: 'Documentation', hidden: true},
+  {type: 'docs', section: 'Documentation'},
   {type: 'style', section: 'Styles', hidden: true},
+  {type: 'chore', section: 'Miscellaneous Chores', hidden: true},
   {type: 'refactor', section: 'Code Refactoring', hidden: true},
   {type: 'test', section: 'Tests', hidden: true},
   {type: 'build', section: 'Build System', hidden: true},
   {type: 'ci', section: 'Continuous Integration', hidden: true},
 ];
 
-export class PHP extends BaseStrategy {
+export class R extends BaseStrategy {
   constructor(options: BaseStrategyOptions) {
+    options.changelogPath = options.changelogPath ?? 'NEWS.md';
     options.changelogSections = options.changelogSections ?? CHANGELOG_SECTIONS;
     super(options);
   }
@@ -46,37 +45,28 @@ export class PHP extends BaseStrategy {
   ): Promise<Update[]> {
     const updates: Update[] = [];
     const version = options.newVersion;
-    const versionsMap: VersionsMap = new Map();
 
-    !this.skipChangelog &&
-      updates.push({
-        path: this.addPath(this.changelogPath),
-        createIfMissing: true,
-        updater: new Changelog({
-          version,
-          changelogEntry: options.changelogEntry,
-        }),
-      });
-
-    // update composer.json
     updates.push({
-      path: this.addPath('composer.json'),
-      createIfMissing: false,
-      updater: new RootComposerUpdatePackages({
+      path: this.addPath(this.changelogPath),
+      createIfMissing: true,
+      updater: new News({
         version,
-        versionsMap,
+        changelogEntry: options.changelogEntry,
       }),
     });
 
-    // update VERSION file
     updates.push({
-      path: this.addPath('VERSION'),
+      path: this.addPath('DESCRIPTION'),
       createIfMissing: false,
-      updater: new DefaultUpdater({
+      updater: new DescriptionUpdater({
         version,
       }),
     });
 
     return updates;
+  }
+
+  protected initialReleaseVersion(): Version {
+    return Version.parse('0.1.0');
   }
 }
